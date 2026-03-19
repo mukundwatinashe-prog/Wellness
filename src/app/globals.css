@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: 54 133 108;
+  --color-accent: 214 130 66;
+  --color-surface: 15 17 20;
+  --color-surface-elevated: 26 29 33;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-neutral-925 text-neutral-100 antialiased;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Subtle gradient overlays */
+.gradient-mask-b {
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.gradient-mask-t {
+  mask-image: linear-gradient(to top, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 70%, transparent 100%);
+}

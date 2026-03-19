@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Wellness Social Care Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #0041cc; --blue-dark: #002d8f; --blue-bg: #eff6ff;
+      --orange: #f7941d; --orange-hover: #ea7c0a; --white: #ffffff;
+      --gray-900: #0f172a; --gray-600: #475569; --font: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font); color: var(--gray-900); line-height: 1.6; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+    .header { background: var(--white); padding: 1rem 0; box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
+    .header .inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--gray-900); }
+    .logo-icon { width: 44px; height: 44px; border-radius: 10px; overflow: hidden; flex-shrink: 0; }
+    .logo-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .logo-text { font-weight: 700; font-size: 1.1rem; }
+    .logo-text sub { display: block; font-weight: 500; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-600); }
+    .menu-toggle { display: flex; flex-direction: column; gap: 5px; padding: 10px; background: none; border: none; cursor: pointer; }
+    .menu-toggle span { width: 24px; height: 2px; background: var(--gray-900); border-radius: 1px; }
+    .header-actions { display: flex; align-items: center; gap: 0.5rem; }
+    .social-link { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; text-decoration: none; transition: opacity 0.2s; }
+    .social-link:hover { opacity: 0.75; }
+    .social-link svg { width: 22px; height: 22px; display: block; }
+    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.35); z-index: 100; opacity: 0; visibility: hidden; transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s; }
+    .drawer-overlay.open { opacity: 1; visibility: visible; }
+    .drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 300px; max-width: 88vw; background: var(--white); z-index: 101; box-shadow: -8px 0 32px rgba(0,0,0,0.12); transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    .drawer.open { transform: translateX(0); }
+    .drawer-inner { padding: 1.5rem 1.25rem; }
+    .drawer a, .drawer .drawer-trigger { display: block; padding: 0.65rem 0; font-size: 1rem; font-weight: 500; color: var(--gray-900); text-decoration: none; border: none; background: none; width: 100%; text-align: left; cursor: pointer; font-family: var(--font); }
+    .drawer a:hover, .drawer .drawer-trigger:hover { color: var(--blue); }
+    .drawer-trigger { display: flex; align-items: center; justify-content: space-between; }
+    .drawer-trigger::after { content: ''; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin-left: auto; transition: transform 0.2s; }
+    .drawer-trigger.expanded::after { transform: rotate(-135deg); }
+    .drawer-sub { max-height: 0; overflow: hidden; padding-left: 1rem; margin-bottom: 0; transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .drawer-sub.open { max-height: 220px; margin-bottom: 0.5rem; }
+    .drawer-sub a { padding: 0.45rem 0; font-size: 0.9rem; color: var(--gray-600); }
+    .drawer-sub a:hover { color: var(--blue); }
+    .drawer .btn-nav { display: block; margin-top: 1rem; padding: 0.65rem 1rem; border-radius: 8px; background: var(--orange); color: var(--white); font-weight: 600; text-align: center; }
+    .drawer .btn-nav:hover { background: var(--orange-hover); color: var(--white); }
+    .section { padding: 4rem 0; background: var(--blue-bg); }
+    .section-title { font-size: 1.75rem; font-weight: 700; color: var(--gray-900); margin: 0 0 2rem; }
+    .about-photo { width: 100%; max-width: 480px; margin: 0 auto 2rem; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,41,204,0.12); }
+    .about-photo img { width: 100%; height: auto; display: block; object-fit: cover; }
+    @media (min-width: 768px) {
+      .about-layout { display: grid; grid-template-columns: 380px 1fr; gap: 3rem; align-items: start; }
+      .about-photo { margin: 0; max-width: none; }
+    }
+    .about-block { margin-bottom: 2rem; }
+    .about-block:last-child { margin-bottom: 0; }
+    .about-block h3 { margin: 0 0 0.75rem; font-size: 1.25rem; font-weight: 700; color: var(--blue-dark); }
+    .about-block p { margin: 0 0 1rem; font-size: 1rem; color: var(--gray-600); line-height: 1.65; }
+    .about-block p:last-child { margin-bottom: 0; }
+    .footer { padding: 2rem 1.5rem; background: var(--blue-dark); color: rgba(255,255,255,0.9); text-align: center; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="inner">
+        <a href="index.html" class="logo">
+          <span class="logo-icon"><img src="logo.png" alt="Wellness Social Care Services" /></span>
+          <span class="logo-text">Wellness Social<sub>Care Services</sub></span>
+        </a>
+        <div class="header-actions"><a class="social-link" href="https://www.linkedin.com/company/wellness-social-care-services-limited/" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page"><svg viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a class="social-link" href="https://www.facebook.com/wellnessscs" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page"><svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button></div>
+      </div>
+    </div>
+    <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+    <aside class="drawer" id="drawer" aria-label="Navigation">
+      <div class="drawer-inner">
+        <a href="index.html" class="drawer-link">Home</a>
+        <button type="button" class="drawer-trigger" id="servicesTrigger" aria-expanded="false" aria-controls="servicesSub">Services</button>
+        <div class="drawer-sub" id="servicesSub" role="region">
+          <a href="personal-care.html">Personal Care</a>
+          <a href="companionship.html">Companionship</a>
+          <a href="medication.html">Medication</a>
+          <a href="meals.html">Meals</a>
+        </div>
+        <a href="jobs.html" class="drawer-link">Job Application</a>
+        <a href="index.html#contact" class="drawer-link">Contact</a>
+        <a href="about.html" class="drawer-link">About Us</a>
+      </div>
+    </aside>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="section-title">About Us</h1>
+      <div class="about-layout">
+        <div class="about-photo">
+          <img src="about-us.png" alt="Carer and client smiling together, giving a thumbs-up" />
+        </div>
+        <div>
+          <div class="about-block">
+            <h3>Our Mission</h3>
+            <p>
+              Wellness Social Care Services, nestled in the heart of Scotland, is a beacon of compassionate care and support, offering a uniquely tailored and specialized home care experience for your beloved family members. With a commitment to enhancing the quality of life for those in need, Wellness understands that every individual's journey is distinct.
+            </p>
+            <p>
+              Our dedicated team of skilled and experienced professionals strives to create a nurturing environment within the comfort of one's home, promoting both physical and emotional well-being. Through personalized care plans, encompassing a range of services from medical assistance to companionship, Wellness ensures that your loved ones receive the attention and consideration they deserve.
+            </p>
+            <p>
+              Wellness endeavor's to provide holistic care that not only addresses practical needs but also kindles the spirit. At Wellness, we believe that fostering a sense of community and togetherness is the cornerstone of a fulfilling life, and we are honored to be part of your family's caregiving journey. We specialise in a variety of care including older people care, assisted living, dementia care and many more.
+            </p>
+          </div>
+          <div class="about-block">
+            <h3>Our Team</h3>
+            <p>
+              Boasting more than 2 decades of experience, with older people assisted living with dementia to Alzheimer's and others, our management team has been at the forefront of delivering exceptional care and nurturing a deep understanding of the evolving needs within the realm of health and wellness.
+            </p>
+            <p>
+              This extensive journey has not only honed our expertise but also cultivated a profound sense of compassion and empathy that forms the bedrock of our services. From our humble beginnings to our current status as a trusted leader, Wellness's legacy of excellence continues to flourish, ensuring that each individual we serve benefits from our rich history of knowledge and commitment to their well-being.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © <span id="year"></span> Wellness Social Care Services. SSSC registered · Care Inspectorate regulated · PVG checked via Disclosure Scotland.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    var menuToggle = document.getElementById('menuToggle');
+    var drawer = document.getElementById('drawer');
+    var overlay = document.getElementById('drawerOverlay');
+    var servicesTrigger = document.getElementById('servicesTrigger');
+    var servicesSub = document.getElementById('servicesSub');
+    function openDrawer() { if (drawer) drawer.classList.add('open'); if (overlay) { overlay.classList.add('open'); overlay.setAttribute('aria-hidden', 'false'); } document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { if (drawer) drawer.classList.remove('open'); if (overlay) { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden', 'true'); } document.body.style.overflow = ''; }
+    if (menuToggle) menuToggle.addEventListener('click', openDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+    if (drawer) drawer.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeDrawer); });
+    if (servicesTrigger && servicesSub) { servicesTrigger.addEventListener('click', function() { var open = servicesSub.classList.toggle('open'); servicesTrigger.classList.toggle('expanded', open); servicesTrigger.setAttribute('aria-expanded', open); }); }
+  </script>
+</body>
+</html>
