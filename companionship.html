@@ -9,9 +9,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --blue: #0041cc; --blue-dark: #002d8f; --blue-bg: #eff6ff;
+      --blue: #0041cc; --blue-dark: #002d8f; --blue-light: #2563eb; --blue-bg: #eff6ff;
       --orange: #f7941d; --orange-hover: #ea7c0a; --white: #ffffff;
-      --gray-900: #0f172a; --gray-600: #475569; --font: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --gray-900: #0f172a; --gray-600: #475569; --gray-500: #64748b;
+      --font: 'Plus Jakarta Sans', system-ui, sans-serif;
     }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: var(--font); color: var(--gray-900); line-height: 1.6; }
@@ -38,17 +39,52 @@
     .drawer a:hover, .drawer .drawer-trigger:hover { color: var(--blue); }
     .drawer-trigger { display: flex; align-items: center; justify-content: space-between; }
     .drawer-trigger::after { content: ''; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin-left: auto; transition: transform 0.2s; }
+    .drawer-trigger.expanded::after { transform: rotate(-135deg); }
     .drawer-sub { max-height: 0; overflow: hidden; padding-left: 1rem; margin-bottom: 0; transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .drawer-sub.open { max-height: 220px; margin-bottom: 0.5rem; }
     .drawer-sub a { padding: 0.45rem 0; font-size: 0.9rem; color: var(--gray-600); }
     .drawer-sub a:hover { color: var(--blue); }
-    .section { padding: 4rem 0; background: var(--blue-bg); }
-    .service-page { max-width: 720px; margin: 0 auto; }
-    .service-page-img { width: 100%; border-radius: 12px; overflow: hidden; background: var(--blue-bg); margin-bottom: 1.5rem; box-shadow: 0 8px 24px rgba(0,41,204,0.1); }
-    .service-page-img img { width: 100%; height: auto; display: block; object-fit: cover; }
-    .service-page-title { font-size: 1.75rem; font-weight: 700; color: var(--blue-dark); margin: 0 0 1rem; }
-    .service-page-body p { margin: 0 0 1rem; font-size: 1rem; color: var(--gray-600); line-height: 1.65; }
-    .service-page-body p:last-child { margin-bottom: 0; }
+
+    .page-hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%); color: var(--white); padding: 3rem 0 0; position: relative; overflow: hidden; }
+    .page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: linear-gradient(to bottom, transparent, var(--blue-bg)); }
+    .hero-grid { display: grid; gap: 2rem; align-items: center; }
+    @media (min-width: 768px) { .hero-grid { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+    .hero-text { padding-bottom: 3rem; }
+    .hero-badge { display: inline-block; padding: 0.3rem 0.85rem; border-radius: 999px; background: rgba(255,255,255,0.15); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .page-hero h1 { margin: 0 0 0.75rem; font-size: 2.25rem; font-weight: 700; line-height: 1.2; }
+    @media (min-width: 768px) { .page-hero h1 { font-size: 2.75rem; } }
+    .page-hero .lead { margin: 0; font-size: 1.05rem; opacity: 0.92; line-height: 1.65; }
+    .hero-img { border-radius: 16px 16px 0 0; overflow: hidden; box-shadow: 0 -8px 40px rgba(0,0,0,0.25); position: relative; z-index: 1; }
+    .hero-img img { width: 100%; height: auto; display: block; object-fit: cover; }
+
+    .section { padding: 4rem 0; }
+    .section--white { background: var(--white); }
+    .section--blue { background: var(--blue-bg); }
+    .section--gradient { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); color: var(--white); text-align: center; padding: 3.5rem 0; }
+
+    .intro-block { max-width: 720px; margin: 0 auto; text-align: center; }
+    .intro-block h2 { margin: 0 0 0.75rem; font-size: 1.6rem; font-weight: 700; color: var(--blue-dark); }
+    .intro-block p { margin: 0; font-size: 1rem; color: var(--gray-600); line-height: 1.7; }
+
+    .features-grid { display: grid; gap: 1.5rem; margin-top: 2.5rem; }
+    @media (min-width: 640px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+    .feature-card { background: var(--white); border-radius: 14px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,41,204,0.07); border: 1px solid rgba(0,41,204,0.07); border-left: 4px solid var(--blue); transition: transform 0.25s, box-shadow 0.25s; }
+    .feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,41,204,0.12); }
+    .feature-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--blue-bg); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
+    .feature-icon svg { width: 20px; height: 20px; color: var(--blue); }
+    .feature-card h3 { margin: 0 0 0.4rem; font-size: 1.05rem; font-weight: 700; color: var(--blue-dark); }
+    .feature-card p { margin: 0; font-size: 0.9rem; color: var(--gray-600); line-height: 1.6; }
+
+    .promise-grid { display: grid; gap: 1.25rem; max-width: 800px; margin: 2rem auto 0; }
+    @media (min-width: 640px) { .promise-grid { grid-template-columns: repeat(3, 1fr); } }
+    .promise-item { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 1.25rem; text-align: center; }
+    .promise-item svg { width: 28px; height: 28px; margin-bottom: 0.5rem; opacity: 0.9; }
+    .promise-item h4 { margin: 0 0 0.25rem; font-size: 0.95rem; font-weight: 700; }
+    .promise-item p { margin: 0; font-size: 0.82rem; opacity: 0.85; line-height: 1.5; }
+    .cta-section h2 { margin: 0 0 0.5rem; font-size: 1.5rem; font-weight: 700; }
+    .cta-section p { margin: 0 0 1.25rem; font-size: 1rem; opacity: 0.9; }
+    .cta-btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 10px; background: var(--orange); color: var(--white); font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+    .cta-btn:hover { background: var(--orange-hover); }
     .footer { padding: 2rem 1.5rem; background: var(--blue-dark); color: rgba(255,255,255,0.9); text-align: center; font-size: 0.85rem; }
   </style>
 </head>
@@ -81,25 +117,100 @@
     </aside>
   </header>
 
-  <main class="section">
+  <section class="page-hero">
     <div class="container">
-      <div class="service-page">
-        <div class="service-page-img">
-          <img src="care-hands.png" alt="Compassionate companionship — a moment of connection" />
+      <div class="hero-grid">
+        <div class="hero-text">
+          <span class="hero-badge">Our Services</span>
+          <h1>Companionship</h1>
+          <p class="lead">Friendly, consistent companionship and emotional support so your loved one never feels alone. A listening ear, conversation, and genuine connection that makes a real difference.</p>
         </div>
-        <h1 class="service-page-title">Companionship</h1>
-        <div class="service-page-body">
-          <p>Friendly, consistent companionship and emotional support so your loved one never feels alone. Our carers offer a listening ear, conversation, and presence that makes a real difference to wellbeing at home.</p>
-          <p>We can support with company during the day, help with hobbies or interests, or simply share a cuppa and a chat. Companionship visits are tailored to what each person enjoys and can include outings, reading, or quiet time together—always with dignity and respect at the heart of what we do.</p>
+        <div class="hero-img">
+          <img src="care-hands.png" alt="Compassionate companionship — a moment of connection" />
         </div>
       </div>
     </div>
-  </main>
+  </section>
+
+  <section class="section section--blue">
+    <div class="container">
+      <div class="intro-block">
+        <h2>How we help</h2>
+        <p>Our carers provide warm, genuine companionship visits tailored to what each person enjoys. Every visit is about meaningful connection, not just being there.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Conversation &amp; company</h3>
+          <p>A friendly chat over a cuppa, sharing stories, or simply being present to brighten the day and reduce loneliness.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>Hobbies &amp; interests</h3>
+          <p>Support with reading, puzzles, crafts, gardening, or any activity your loved one enjoys — keeping minds active and spirits high.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Outings &amp; fresh air</h3>
+          <p>Accompanied trips to the shops, park, or local community groups — helping your loved one stay connected to the world around them.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Emotional support</h3>
+          <p>A reassuring, caring presence during difficult times — helping to ease anxiety, lift mood, and build trust over time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container">
+      <div class="intro-block">
+        <h2>More than just a visit</h2>
+        <p>Companionship visits are tailored to what each person enjoys and can include outings, reading, or quiet time together — always with dignity and respect at the heart of what we do. We match carers with service users so that real relationships can grow.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--gradient cta-section">
+    <div class="container">
+      <div class="promise-grid">
+        <div class="promise-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h4>PVG checked</h4>
+          <p>All carers hold valid Disclosure Scotland PVG checks</p>
+        </div>
+        <div class="promise-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          <h4>Care Inspectorate</h4>
+          <p>Regulated and inspected against national care standards</p>
+        </div>
+        <div class="promise-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h4>SSSC registered</h4>
+          <p>Our workforce meets national standards for skills and conduct</p>
+        </div>
+      </div>
+      <div style="margin-top: 2.5rem;">
+        <h2>Want companionship for your loved one?</h2>
+        <p>Get in touch to discuss how we can provide friendly, reliable support at home.</p>
+        <a href="contact.html" class="cta-btn">Make a care enquiry</a>
+      </div>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="container">
       <div style="margin-bottom:0.35rem;opacity:0.85;">Flexspace Business Units, Queensferry Rd, Dunfermline KY11 8UU</div>
-      © <span id="year"></span> Wellness Social Care Services. SSSC registered · Care Inspectorate regulated · PVG checked via Disclosure Scotland.
+      &copy; <span id="year"></span> Wellness Social Care Services. SSSC registered &middot; Care Inspectorate regulated &middot; PVG checked via Disclosure Scotland.
     </div>
   </footer>
 

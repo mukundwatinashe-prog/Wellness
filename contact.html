@@ -190,6 +190,23 @@
       font-size: 0.85rem;
     }
     .footer-address { margin-bottom: 0.35rem; opacity: 0.85; }
+    .directions-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .directions-btn:hover { background: var(--blue-dark); }
+    .map-card { padding: 0.5rem; }
+    .map-wrap { border-radius: 10px; overflow: hidden; }
   </style>
 </head>
 <body>
@@ -249,6 +266,16 @@
               Queensferry Rd<br />
               Dunfermline KY11 8UU
             </address>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Flexspace+Business+Units+Queensferry+Rd+Dunfermline+KY11+8UU" target="_blank" rel="noopener noreferrer" class="directions-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              Get directions
+            </a>
+          </div>
+
+          <div class="info-card map-card">
+            <div class="map-wrap">
+              <iframe src="https://www.google.com/maps?q=Flexspace+Business+Units+Queensferry+Rd+Dunfermline+KY11+8UU&output=embed" width="100%" height="220" style="border:0;border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Wellness Social Care Services on Google Maps"></iframe>
+            </div>
           </div>
 
           <div class="info-card">
@@ -258,7 +285,7 @@
             </h3>
             <ul class="phone-list">
               <li>
-                <span class="council-name">Fife Council Area</span>
+                <span class="council-name">Fife Council</span>
                 <a href="tel:07340881019">07340 881019</a>
               </li>
               <li>
@@ -266,7 +293,7 @@
                 <a href="tel:07354937042">07354 937042</a>
               </li>
               <li>
-                <span class="council-name">Perth &amp; Kinross</span>
+                <span class="council-name">Perth &amp; Kinross Council</span>
                 <a href="tel:07340881019">07340 881019</a>
               </li>
             </ul>
