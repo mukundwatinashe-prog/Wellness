@@ -323,8 +323,8 @@
               <input type="tel" id="yourPhone" name="yourPhone" required placeholder="e.g. 07700 900000" />
             </div>
             <div class="form-row">
-              <label for="yourEmail">Your email address</label>
-              <input type="email" id="yourEmail" name="yourEmail" placeholder="you@example.com" />
+              <label for="yourEmail">Your email address <span class="req">*</span></label>
+              <input type="email" id="yourEmail" name="email" required placeholder="you@example.com" />
             </div>
             <div class="form-row">
               <label for="careType">Type of care required <span class="req">*</span></label>
@@ -369,6 +369,7 @@
             <input type="hidden" name="_subject" value="New Care Enquiry from Website" />
             <input type="hidden" name="_next" value="https://wellness-scs.co.uk/contact.html?submitted=true" />
             <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_autoresponse" value="Thank you for your enquiry someone from our team will be in touch after we have reviewed your information.&#10;Thank you,&#10;Wellness team" />
             <button type="submit" class="form-btn">Submit enquiry</button>
           </form>
 
