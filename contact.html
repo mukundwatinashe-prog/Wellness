@@ -310,7 +310,7 @@
         </div>
 
         <div>
-          <form class="form-wrap" id="contactForm">
+          <form class="form-wrap" id="contactForm" action="https://formsubmit.co/admin@wellness-scs.co.uk" method="POST">
             <h2>Care Enquiry Form</h2>
             <p class="form-intro">Tell us about the care you need and we'll get back to you promptly.</p>
 
@@ -366,6 +366,9 @@
               <label for="additionalInfo">Additional information</label>
               <textarea id="additionalInfo" name="additionalInfo" placeholder="Any other details about care needs, medical conditions, or preferences..."></textarea>
             </div>
+            <input type="hidden" name="_subject" value="New Care Enquiry from Website" />
+            <input type="hidden" name="_next" value="https://wellness-scs.co.uk/contact.html?submitted=true" />
+            <input type="hidden" name="_captcha" value="false" />
             <button type="submit" class="form-btn">Submit enquiry</button>
           </form>
 
@@ -387,12 +390,12 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      this.style.display = 'none';
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('submitted') === 'true') {
+      var form = document.getElementById('contactForm');
+      if (form) form.style.display = 'none';
       document.getElementById('successMsg').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    }
 
     var menuToggle = document.getElementById('menuToggle');
     var drawer = document.getElementById('drawer');

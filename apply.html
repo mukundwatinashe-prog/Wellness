@@ -148,7 +148,7 @@
       <h1 class="section-title">Apply — Care Assistant</h1>
       <p class="section-sub" id="roleLine">Loading...</p>
 
-      <form class="form-wrap" id="applyForm">
+      <form class="form-wrap" id="applyForm" action="https://formsubmit.co/admin@wellness-scs.co.uk" method="POST" enctype="multipart/form-data">
         <div class="form-row">
           <label for="fullName">Full name</label>
           <input type="text" id="fullName" name="fullName" required placeholder="e.g. Jane Smith" />
@@ -189,6 +189,9 @@
           <label for="message">Anything else you'd like us to know</label>
           <textarea id="message" name="message" placeholder="Optional"></textarea>
         </div>
+        <input type="hidden" name="_subject" value="New Job Application from Website" />
+        <input type="hidden" name="_next" value="https://wellness-scs.co.uk/apply.html?submitted=true" />
+        <input type="hidden" name="_captcha" value="false" />
         <button type="submit" class="form-btn">Submit application</button>
       </form>
 
@@ -228,13 +231,12 @@
           : 'Part-time position — competitive pay.';
     });
 
-    // Handle submit
-    document.getElementById('applyForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      this.style.display = 'none';
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('submitted') === 'true') {
+      var form = document.getElementById('applyForm');
+      if (form) form.style.display = 'none';
       document.getElementById('successMsg').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    }
 
     // Drawer
     var menuToggle = document.getElementById('menuToggle');
