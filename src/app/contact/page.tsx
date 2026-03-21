@@ -6,6 +6,24 @@ export const metadata: Metadata = {
     "Get in touch for care enquiries, professional referrals or career opportunities.",
 };
 
+const regionalNumbers = [
+  {
+    council: "Fife Council",
+    display: "07354 937042",
+    tel: "+447354937042",
+  },
+  {
+    council: "Falkirk Council",
+    display: "07340 881019",
+    tel: "+447340881019",
+  },
+  {
+    council: "Perth & Kinross Council",
+    display: "07340 881019",
+    tel: "+447340881019",
+  },
+] as const;
+
 export default function ContactPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
@@ -28,25 +46,32 @@ export default function ContactPage() {
             <li>
               <span className="text-neutral-500">Email:</span>{" "}
               <a
-                href="mailto:info@wellnesscare.example"
+                href="mailto:admin@wellness-scs.co.uk"
                 className="text-primary-400 hover:text-primary-300"
               >
-                info@wellnesscare.example
+                admin@wellness-scs.co.uk
               </a>
             </li>
             <li>
-              <span className="text-neutral-500">Phone:</span>{" "}
-              <a
-                href="tel:+440000000000"
-                className="text-primary-400 hover:text-primary-300"
-              >
-                0000 000 0000
-              </a>
+              <span className="mb-2 block text-neutral-500">Phone by council area:</span>
+              <ul className="mt-2 space-y-3 border-l-2 border-primary-500/30 pl-4">
+                {regionalNumbers.map(({ council, display, tel }) => (
+                  <li key={council}>
+                    <span className="block text-sm text-neutral-500">{council}</span>
+                    <a
+                      href={`tel:${tel}`}
+                      className="text-base font-medium text-primary-400 hover:text-primary-300"
+                    >
+                      {display}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </li>
             <li>
               <span className="text-neutral-500">Address:</span>
               <br />
-              [Your business address]
+              Flexspace Business Units, Queensferry Rd, Dunfermline KY11 8UU
             </li>
           </ul>
         </section>

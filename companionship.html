@@ -45,6 +45,36 @@
     .drawer-sub a { padding: 0.45rem 0; font-size: 0.9rem; color: var(--gray-600); }
     .drawer-sub a:hover { color: var(--blue); }
 
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 0.85rem;
+      border-radius: 8px;
+      background: var(--orange);
+      color: var(--white) !important;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      margin-right: 0.25rem;
+    }
+    .header-cta:hover { background: var(--orange-hover); }
+    @media (min-width: 480px) {
+      .header-cta { font-size: 0.85rem; padding: 0.55rem 1rem; }
+    }
+    .drawer .btn-nav {
+      display: block;
+      margin-bottom: 0.5rem;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      background: var(--orange);
+      color: var(--white) !important;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+    }
+    .drawer .btn-nav:hover { background: var(--orange-hover); color: var(--white) !important; }
+
     .page-hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%); color: var(--white); padding: 3rem 0 0; position: relative; overflow: hidden; }
     .page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: linear-gradient(to bottom, transparent, var(--blue-bg)); }
     .hero-grid { display: grid; gap: 2rem; align-items: center; }
@@ -92,7 +122,7 @@
   <header class="header">
     <div class="container">
       <div class="inner">
-        <a href="index.html" class="logo">
+        <a href="./" class="logo">
           <span class="logo-icon"><img src="logo.png" alt="Wellness Social Care Services" /></span>
           <span class="logo-text">Wellness Social<sub>Care Services</sub></span>
         </a>
@@ -102,7 +132,8 @@
     <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
     <aside class="drawer" id="drawer" aria-label="Navigation">
       <div class="drawer-inner">
-        <a href="index.html" class="drawer-link">Home</a>
+        <a href="contact.html" class="btn-nav">Start a care enquiry</a>
+        <a href="./" class="drawer-link">Home</a>
         <button type="button" class="drawer-trigger" id="servicesTrigger" aria-expanded="false" aria-controls="servicesSub">Services</button>
         <div class="drawer-sub" id="servicesSub" role="region">
           <a href="personal-care.html">Personal Care</a>
@@ -110,6 +141,7 @@
           <a href="medication.html">Medication</a>
           <a href="meals.html">Meals</a>
         </div>
+        <a href="services.html" class="drawer-link">All services overview</a>
         <a href="jobs.html" class="drawer-link">Job Application</a>
         <a href="contact.html" class="drawer-link">Contact</a>
         <a href="about.html" class="drawer-link">About Us</a>

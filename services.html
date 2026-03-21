@@ -26,6 +26,23 @@
     .menu-toggle { display: flex; flex-direction: column; gap: 5px; padding: 10px; background: none; border: none; cursor: pointer; }
     .menu-toggle span { width: 24px; height: 2px; background: var(--gray-900); border-radius: 1px; }
     .header-actions { display: flex; align-items: center; gap: 0.5rem; }
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 0.85rem;
+      border-radius: 8px;
+      background: var(--orange);
+      color: var(--white) !important;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      margin-right: 0.25rem;
+    }
+    .header-cta:hover { background: var(--orange-hover); }
+    @media (min-width: 480px) {
+      .header-cta { font-size: 0.85rem; padding: 0.55rem 1rem; }
+    }
     .social-link { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; text-decoration: none; transition: opacity 0.2s; }
     .social-link:hover { opacity: 0.75; }
     .social-link svg { width: 22px; height: 22px; display: block; }
@@ -43,8 +60,18 @@
     .drawer-sub.open { max-height: 220px; margin-bottom: 0.5rem; }
     .drawer-sub a { padding: 0.45rem 0; font-size: 0.9rem; color: var(--gray-600); }
     .drawer-sub a:hover { color: var(--blue); }
-    .drawer .btn-nav { display: block; margin-top: 1rem; padding: 0.65rem 1rem; border-radius: 8px; background: var(--orange); color: var(--white); font-weight: 600; text-align: center; }
-    .drawer .btn-nav:hover { background: var(--orange-hover); color: var(--white); }
+    .drawer .btn-nav {
+      display: block;
+      margin-bottom: 0.5rem;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      background: var(--orange);
+      color: var(--white) !important;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+    }
+    .drawer .btn-nav:hover { background: var(--orange-hover); color: var(--white) !important; }
     .section { padding: 4rem 0; background: var(--blue-bg); }
     .section-title { font-size: 1.75rem; font-weight: 700; color: var(--blue-dark); margin: 0 0 0.5rem; }
     .section-desc { font-size: 1rem; color: var(--gray-600); max-width: 580px; margin: 0 0 2rem; }
@@ -52,11 +79,57 @@
     @media (min-width: 640px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 900px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
     .service-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,41,204,0.06); border: 1px solid rgba(0,41,204,0.06); }
+    a.service-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    a.service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,41,204,0.12);
+      border-color: rgba(0,65,204,0.2);
+    }
+    a.service-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
     .service-card-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; background: var(--blue-bg); }
     .service-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .service-card-body { padding: 1.25rem; }
     .service-card h3 { margin: 0 0 0.4rem; font-size: 1.05rem; font-weight: 600; color: var(--blue-dark); }
     .service-card p { margin: 0; font-size: 0.85rem; color: var(--gray-600); line-height: 1.5; }
+    .services-cta {
+      margin-top: 3rem;
+      padding: 2rem 1.5rem;
+      background: var(--white);
+      border-radius: 14px;
+      border: 1px solid rgba(0,41,204,0.1);
+      text-align: center;
+      box-shadow: 0 6px 24px rgba(0,41,204,0.08);
+    }
+    .services-cta h2 { margin: 0 0 0.5rem; font-size: 1.25rem; font-weight: 700; color: var(--blue-dark); }
+    .services-cta p { margin: 0 0 1.25rem; color: var(--gray-600); font-size: 0.95rem; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+    .services-cta-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; align-items: center; }
+    .services-cta .btn-primary {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      background: var(--orange);
+      color: var(--white) !important;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .services-cta .btn-primary:hover { background: var(--orange-hover); }
+    .services-cta .btn-secondary {
+      display: inline-block;
+      padding: 0.75rem 1.25rem;
+      border-radius: 10px;
+      border: 2px solid var(--blue);
+      color: var(--blue) !important;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .services-cta .btn-secondary:hover { background: rgba(0,65,204,0.06); }
     .footer { padding: 2rem 1.5rem; background: var(--blue-dark); color: rgba(255,255,255,0.9); text-align: center; font-size: 0.85rem; }
   </style>
 </head>
@@ -64,17 +137,18 @@
   <header class="header">
     <div class="container">
       <div class="inner">
-        <a href="index.html" class="logo">
+        <a href="./" class="logo">
           <span class="logo-icon"><img src="logo.png" alt="Wellness Social Care Services" /></span>
           <span class="logo-text">Wellness Social<sub>Care Services</sub></span>
         </a>
-        <div class="header-actions"><a class="social-link" href="https://www.linkedin.com/company/wellness-social-care-services-limited/" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page"><svg viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a class="social-link" href="https://www.facebook.com/wellnessscs" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page"><svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button></div>
+        <div class="header-actions"><a href="contact.html" class="header-cta">Free care enquiry</a><a class="social-link" href="https://www.linkedin.com/company/wellness-social-care-services-limited/" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page"><svg viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a class="social-link" href="https://www.facebook.com/wellnessscs" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page"><svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button></div>
       </div>
     </div>
     <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
     <aside class="drawer" id="drawer" aria-label="Navigation">
       <div class="drawer-inner">
-        <a href="index.html" class="drawer-link">Home</a>
+        <a href="contact.html" class="btn-nav">Start a care enquiry</a>
+        <a href="./" class="drawer-link">Home</a>
         <button type="button" class="drawer-trigger" id="servicesTrigger" aria-expanded="false" aria-controls="servicesSub">Services</button>
         <div class="drawer-sub" id="servicesSub" role="region">
           <a href="personal-care.html">Personal Care</a>
@@ -82,6 +156,7 @@
           <a href="medication.html">Medication</a>
           <a href="meals.html">Meals</a>
         </div>
+        <a href="services.html" class="drawer-link">All services overview</a>
         <a href="jobs.html" class="drawer-link">Job Application</a>
         <a href="contact.html" class="drawer-link">Contact</a>
         <a href="about.html" class="drawer-link">About Us</a>
@@ -96,7 +171,7 @@
         Flexible, dignified support tailored to each person and family across Scotland.
       </p>
       <div class="services-grid">
-        <div class="service-card">
+        <a href="personal-care.html" class="service-card">
           <div class="service-card-img">
             <img src="care-dressing.png" alt="Caregiver gently assisting with dressing at home" />
           </div>
@@ -104,8 +179,8 @@
             <h3>Personal Care</h3>
             <p>We support service users with personal care in the comfort of home, with dignity and respect. This includes assistance with washing and showering, oral care, brushing hair, and continence care—all delivered by our trained, compassionate team.</p>
           </div>
-        </div>
-        <div class="service-card">
+        </a>
+        <a href="companionship.html" class="service-card">
           <div class="service-card-img">
             <img src="care-hands.png" alt="Compassionate companionship — a moment of connection" />
           </div>
@@ -113,8 +188,8 @@
             <h3>Companionship</h3>
             <p>Friendly, consistent companionship and emotional support so your loved one never feels alone.</p>
           </div>
-        </div>
-        <div class="service-card">
+        </a>
+        <a href="medication.html" class="service-card">
           <div class="service-card-img">
             <img src="care-companion.png" alt="Professional care and reassurance" />
           </div>
@@ -122,8 +197,8 @@
             <h3>Medication</h3>
             <p>Support with medication reminders and management, so treatments are taken safely and on time.</p>
           </div>
-        </div>
-        <div class="service-card">
+        </a>
+        <a href="meals.html" class="service-card">
           <div class="service-card-img">
             <img src="care-meals.png" alt="Caregiver bringing a meal with a smile" />
           </div>
@@ -131,6 +206,14 @@
             <h3>Meals</h3>
             <p>Help with meal preparation, feeding and nutrition so your loved one stays well nourished at home.</p>
           </div>
+        </a>
+      </div>
+      <div class="services-cta">
+        <h2>Not sure which service fits?</h2>
+        <p>Tell us a little about your situation — we’ll help you explore options. There’s no obligation to proceed.</p>
+        <div class="services-cta-actions">
+          <a href="contact.html" class="btn-primary">Get a free care enquiry</a>
+          <a href="tel:07354937042" class="btn-secondary">Call Fife: 07354 937042</a>
         </div>
       </div>
     </div>
