@@ -130,6 +130,47 @@
       font-size: 0.9rem;
     }
     .services-cta .btn-secondary:hover { background: rgba(0,65,204,0.06); }
+    .services-cta .btn-secondary.is-disabled {
+      opacity: 0.45;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+    .services-cta-phone {
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(0,41,204,0.1);
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+    .services-cta-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--blue-dark);
+    }
+    .services-cta-select {
+      width: 100%;
+      margin-bottom: 0.75rem;
+      padding: 0.65rem 0.85rem;
+      border-radius: 10px;
+      border: 1.5px solid rgba(0,41,204,0.2);
+      background: var(--white);
+      font-family: var(--font);
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--gray-900);
+      cursor: pointer;
+      appearance: auto;
+    }
+    .services-cta-select:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0, 65, 204, 0.12);
+    }
+    .services-cta-call-btn { display: inline-block; width: 100%; text-align: center; box-sizing: border-box; }
     .footer { padding: 2rem 1.5rem; background: var(--blue-dark); color: rgba(255,255,255,0.9); text-align: center; font-size: 0.85rem; }
   </style>
 </head>
@@ -213,7 +254,16 @@
         <p>Tell us a little about your situation — we’ll help you explore options. There’s no obligation to proceed.</p>
         <div class="services-cta-actions">
           <a href="contact.html" class="btn-primary">Get a free care enquiry</a>
-          <a href="tel:07354937042" class="btn-secondary">Call Fife: 07354 937042</a>
+        </div>
+        <div class="services-cta-phone">
+          <label for="areaPhoneSelect" class="services-cta-label">Or call us — choose your council area:</label>
+          <select id="areaPhoneSelect" class="services-cta-select" aria-label="Council area and phone number. Choose your area, then tap Call this number.">
+            <option value="">Select council area…</option>
+            <option value="tel:07354937042">Fife Council — 07354 937042</option>
+            <option value="tel:07340881019">Falkirk Council — 07340 881019</option>
+            <option value="tel:07340881019">Perth &amp; Kinross Council — 07340 881019</option>
+          </select>
+          <a href="#" class="btn-secondary services-cta-call-btn is-disabled" id="callAreaBtn" aria-disabled="true">Call this number</a>
         </div>
       </div>
     </div>
@@ -239,6 +289,25 @@
     if (overlay) overlay.addEventListener('click', closeDrawer);
     if (drawer) drawer.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeDrawer); });
     if (servicesTrigger && servicesSub) { servicesTrigger.addEventListener('click', function() { var open = servicesSub.classList.toggle('open'); servicesTrigger.classList.toggle('expanded', open); servicesTrigger.setAttribute('aria-expanded', open); }); }
+
+    var areaPhoneSelect = document.getElementById('areaPhoneSelect');
+    var callAreaBtn = document.getElementById('callAreaBtn');
+    function updateCallAreaButton() {
+      if (!callAreaBtn || !areaPhoneSelect) return;
+      var v = areaPhoneSelect.value;
+      if (v) {
+        callAreaBtn.href = v;
+        callAreaBtn.classList.remove('is-disabled');
+        callAreaBtn.setAttribute('aria-disabled', 'false');
+      } else {
+        callAreaBtn.href = '#';
+        callAreaBtn.classList.add('is-disabled');
+        callAreaBtn.setAttribute('aria-disabled', 'true');
+      }
+    }
+    if (areaPhoneSelect) areaPhoneSelect.addEventListener('change', updateCallAreaButton);
+    if (callAreaBtn) callAreaBtn.addEventListener('click', function(e) { if (!areaPhoneSelect || !areaPhoneSelect.value) e.preventDefault(); });
+    updateCallAreaButton();
   </script>
 </body>
 </html>
