@@ -201,7 +201,7 @@
           <label for="experience">Relevant experience</label>
           <textarea id="experience" name="experience" placeholder="Tell us about any care or support work experience you have..."></textarea>
         </div>
-        <div class="form-row">
+        <div class="form-row" id="availabilityRow">
           <label for="availability">Your availability</label>
           <input type="text" id="availability" name="availability" placeholder="e.g. Weekdays, mornings only" />
         </div>
@@ -245,17 +245,33 @@
     var params = new URLSearchParams(window.location.search);
     var role = params.get('role') || 'part-time';
     var roleInput = document.getElementById('roleType');
+    var availabilityRow = document.getElementById('availabilityRow');
+    var availabilityInput = document.getElementById('availability');
     var roleDescription =
       'Applicants must hold a valid UK driving licence. We are not currently offering any switches.';
+
+    function setAvailabilityField(isFullTime) {
+      if (!availabilityRow || !availabilityInput) return;
+      if (isFullTime) {
+        availabilityRow.style.display = 'none';
+        availabilityInput.value = '';
+        availabilityInput.removeAttribute('name');
+      } else {
+        availabilityRow.style.display = '';
+        availabilityInput.setAttribute('name', 'availability');
+      }
+    }
 
     if (role === 'full-time') {
       roleInput.value = 'full-time';
       document.getElementById('roleLine').textContent =
         'Full-time position — competitive pay. ' + roleDescription;
+      setAvailabilityField(true);
     } else {
       roleInput.value = 'part-time';
       document.getElementById('roleLine').textContent =
         'Part-time position — competitive pay. ' + roleDescription;
+      setAvailabilityField(false);
     }
 
     var urlParams = new URLSearchParams(window.location.search);
