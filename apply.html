@@ -246,20 +246,25 @@
     var params = new URLSearchParams(window.location.search);
     var role = params.get('role') || 'part-time';
     var roleSelect = document.getElementById('roleType');
+    var roleDescription =
+      'Applicants must hold a valid UK driving licence. We are not currently offering any switches.';
+
     if (role === 'full-time') {
       roleSelect.value = 'full-time';
-      document.getElementById('roleLine').textContent = 'Full-time position — competitive pay.';
+      document.getElementById('roleLine').textContent =
+        'Full-time position — competitive pay. ' + roleDescription;
     } else {
       roleSelect.value = 'part-time';
-      document.getElementById('roleLine').textContent = 'Part-time position — competitive pay.';
+      document.getElementById('roleLine').textContent =
+        'Part-time position — competitive pay. ' + roleDescription;
     }
 
     // Update subtitle when user changes the select
     roleSelect.addEventListener('change', function() {
       document.getElementById('roleLine').textContent =
-        this.value === 'full-time'
-          ? 'Full-time position — competitive pay.'
-          : 'Part-time position — competitive pay.';
+        (this.value === 'full-time'
+          ? 'Full-time position — competitive pay. '
+          : 'Part-time position — competitive pay. ') + roleDescription;
     });
 
     var urlParams = new URLSearchParams(window.location.search);
