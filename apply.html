@@ -181,7 +181,7 @@
 
       <form class="form-wrap" id="applyForm" action="https://formsubmit.co/admin@wellness-scs.co.uk" method="POST" enctype="multipart/form-data">
         <div class="form-row">
-          <label for="fullName">Full name</label>
+          <label for="fullName">Full name <span style="color:#dc2626">*</span></label>
           <input type="text" id="fullName" name="fullName" required placeholder="e.g. Jane Smith" />
         </div>
         <div class="form-row">
@@ -189,20 +189,14 @@
           <input type="email" id="email" name="email" required placeholder="you@example.com" />
         </div>
         <div class="form-row">
-          <label for="phone">Phone number</label>
+          <label for="phone">Phone number <span style="color:#dc2626">*</span></label>
           <input type="tel" id="phone" name="phone" required placeholder="e.g. 07700 900000" />
         </div>
         <div class="form-row">
-          <label for="address">Address</label>
-          <input type="text" id="address" name="address" placeholder="Your address" />
+          <label for="address">Address <span style="color:#dc2626">*</span></label>
+          <input type="text" id="address" name="address" required placeholder="Your address" />
         </div>
-        <div class="form-row">
-          <label for="roleType">Role type</label>
-          <select id="roleType" name="roleType" required>
-            <option value="part-time">Part-time</option>
-            <option value="full-time">Full-time</option>
-          </select>
-        </div>
+        <input type="hidden" id="roleType" name="roleType" value="part-time" />
         <div class="form-row">
           <label for="experience">Relevant experience</label>
           <textarea id="experience" name="experience" placeholder="Tell us about any care or support work experience you have..."></textarea>
@@ -215,6 +209,11 @@
           <label for="cv">Upload your CV <span style="color:#dc2626">*</span></label>
           <input type="file" id="cv" name="cv" required accept=".pdf,.doc,.docx" />
           <small style="color:var(--gray-600); font-size:0.78rem;">Accepted formats: PDF, DOC, DOCX</small>
+        </div>
+        <div class="form-row">
+          <label for="drivingLicence">Upload your UK driving licence <span style="color:#dc2626">*</span></label>
+          <input type="file" id="drivingLicence" name="drivingLicence" required accept=".pdf,.jpg,.jpeg,.png,.heic,.webp" />
+          <small style="color:var(--gray-600); font-size:0.78rem;">Accepted formats: PDF, JPG, PNG, HEIC, WEBP</small>
         </div>
         <div class="form-row">
           <label for="message">Anything else you'd like us to know</label>
@@ -245,27 +244,19 @@
     // Pre-select role from query string
     var params = new URLSearchParams(window.location.search);
     var role = params.get('role') || 'part-time';
-    var roleSelect = document.getElementById('roleType');
+    var roleInput = document.getElementById('roleType');
     var roleDescription =
       'Applicants must hold a valid UK driving licence. We are not currently offering any switches.';
 
     if (role === 'full-time') {
-      roleSelect.value = 'full-time';
+      roleInput.value = 'full-time';
       document.getElementById('roleLine').textContent =
         'Full-time position — competitive pay. ' + roleDescription;
     } else {
-      roleSelect.value = 'part-time';
+      roleInput.value = 'part-time';
       document.getElementById('roleLine').textContent =
         'Part-time position — competitive pay. ' + roleDescription;
     }
-
-    // Update subtitle when user changes the select
-    roleSelect.addEventListener('change', function() {
-      document.getElementById('roleLine').textContent =
-        (this.value === 'full-time'
-          ? 'Full-time position — competitive pay. '
-          : 'Part-time position — competitive pay. ') + roleDescription;
-    });
 
     var urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('submitted') === 'true') {

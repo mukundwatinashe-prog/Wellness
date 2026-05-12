@@ -106,7 +106,14 @@
     .badge-pt { background: #dbeafe; color: var(--blue-dark); }
     .badge-ft { background: #ffedd5; color: #9a3412; }
     .job-title { margin: 0 0 0.5rem; font-size: 1.15rem; font-weight: 700; color: var(--blue-dark); }
-    .job-meta { margin: 0 0 0.4rem; font-size: 0.9rem; color: var(--gray-600); }
+    .job-details {
+      margin: 0 0 1rem;
+      padding-left: 1.15rem;
+      font-size: 0.9rem;
+      color: var(--gray-600);
+    }
+    .job-details li { margin-bottom: 0.35rem; }
+    .job-details strong { color: var(--gray-900); }
     .job-cta {
       display: inline-block;
       margin-top: 1rem;
@@ -160,19 +167,23 @@
         <a href="apply.html?role=part-time" class="job-card">
           <span class="job-badge badge-pt">Part-time</span>
           <h2 class="job-title">Care Assistant — Part-time</h2>
-          <p class="job-meta">Flexible hours to suit your availability</p>
-          <p class="job-meta">Competitive pay</p>
-          <p class="job-meta">Applicants must hold a valid UK driving licence.</p>
-          <p class="job-meta">We are not currently offering any switches.</p>
+          <ul class="job-details">
+            <li><strong>Flexible hours to suit your availability</strong></li>
+            <li><strong>Competitive pay</strong></li>
+            <li><strong>Applicants must hold a valid UK driving licence</strong></li>
+            <li><strong>We are not currently offering any switches</strong></li>
+          </ul>
           <span class="job-cta">Apply now</span>
         </a>
         <a href="apply.html?role=full-time" class="job-card">
           <span class="job-badge badge-ft">Full-time</span>
           <h2 class="job-title">Care Assistant — Full-time</h2>
-          <p class="job-meta">Contracted full-time hours</p>
-          <p class="job-meta">Competitive pay</p>
-          <p class="job-meta">Applicants must hold a valid UK driving licence.</p>
-          <p class="job-meta">We are not currently offering any switches.</p>
+          <ul class="job-details">
+            <li><strong>Contracted full-time hours</strong></li>
+            <li><strong>Competitive pay</strong></li>
+            <li><strong>Applicants must hold a valid UK driving licence</strong></li>
+            <li><strong>We are not currently offering any switches</strong></li>
+          </ul>
           <span class="job-cta">Apply now</span>
         </a>
       </div>
