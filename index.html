@@ -626,6 +626,60 @@
     }
     .contact .section-title { color: var(--white); }
     .contact .section-desc { color: rgba(255,255,255,0.9); margin-left: auto; margin-right: auto; }
+    .contact-cards {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: 1rem;
+      padding-bottom: 0.75rem;
+      margin: 0 -1rem 1.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      text-align: left;
+    }
+    .contact-cards::-webkit-scrollbar {
+      height: 6px;
+    }
+    .contact-cards::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.35);
+      border-radius: 3px;
+    }
+    @media (min-width: 768px) {
+      .contact-cards {
+        margin: 0 auto 1.5rem;
+        padding-left: 0;
+        padding-right: 0;
+        scroll-padding-left: 0;
+        max-width: 100%;
+        justify-content: center;
+      }
+    }
+    .contact-card {
+      flex: 0 0 min(78vw, 260px);
+      scroll-snap-align: start;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+    .contact-card strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: var(--white);
+    }
+    .contact-card a {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-card a:hover { text-decoration: underline; }
+    .contact-address {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin: 0 0 1.25rem;
+    }
     .contact .btn {
       display: inline-block;
       padding: 0.85rem 1.75rem;
@@ -806,21 +860,21 @@
       <p class="section-desc">
         Whether you're a family, a referrer or a professional partner, we're here to help. Use the form on our contact page for a detailed enquiry, or call the number for your area below.
       </p>
-      <div style="display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-bottom:1.5rem;text-align:left;">
-        <div style="background:rgba(255,255,255,0.12);border-radius:10px;padding:1rem 1.25rem;min-width:200px;">
-          <strong style="display:block;margin-bottom:0.25rem;">Fife Council</strong>
-          <a href="tel:07354937042" style="color:var(--orange);text-decoration:none;font-weight:600;">07354 937042</a>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <strong>Fife Council</strong>
+          <a href="tel:07354937042">07354 937042</a>
         </div>
-        <div style="background:rgba(255,255,255,0.12);border-radius:10px;padding:1rem 1.25rem;min-width:200px;">
-          <strong style="display:block;margin-bottom:0.25rem;">Falkirk Council</strong>
-          <a href="tel:07340881019" style="color:var(--orange);text-decoration:none;font-weight:600;">07340 881019</a>
+        <div class="contact-card">
+          <strong>Falkirk Council</strong>
+          <a href="tel:07340881019">07340 881019</a>
         </div>
-        <div style="background:rgba(255,255,255,0.12);border-radius:10px;padding:1rem 1.25rem;min-width:200px;">
-          <strong style="display:block;margin-bottom:0.25rem;">Perth &amp; Kinross Council</strong>
-          <a href="tel:07340881019" style="color:var(--orange);text-decoration:none;font-weight:600;">07340 881019</a>
+        <div class="contact-card">
+          <strong>Perth &amp; Kinross Council</strong>
+          <a href="tel:07340881019">07340 881019</a>
         </div>
       </div>
-      <p style="font-size:0.9rem;opacity:0.85;margin:0 0 1.25rem;">Flexspace Business Units, Queensferry Rd, Dunfermline KY11 8UU</p>
+      <p class="contact-address">Flexspace Business Units, Queensferry Rd, Dunfermline KY11 8UU</p>
       <a href="contact.html" class="btn">Make a care enquiry</a>
     </div>
   </section>
