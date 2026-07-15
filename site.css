@@ -1664,6 +1664,14 @@ body.drawer-open { overflow: hidden; }
   overflow: hidden;
   background: var(--blue-bg);
   aspect-ratio: 4 / 3;
+  min-height: 140px;
+}
+
+@media (min-width: 640px) {
+  .feature-row-media {
+    aspect-ratio: 5 / 4;
+    min-height: 170px;
+  }
 }
 
 .feature-row-media img {

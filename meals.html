@@ -55,7 +55,11 @@
   </aside>
 
   <main id="main">
-    <section class="service-hero">
+    <section class="service-hero service-hero--video" aria-label="Meals and nutrition">
+      <video class="service-hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <source src="meal-video.mp4" type="video/mp4" />
+      </video>
+      <div class="service-hero-overlay" aria-hidden="true"></div>
       <div class="container">
         <span class="service-hero-badge">Our Services</span>
         <h1>Meals &amp; Nutrition</h1>
@@ -73,7 +77,10 @@
           <p>We support with every part of mealtimes — from planning and shopping to cooking and sitting with you while you eat. Our goal is to make meals safe, enjoyable, and part of your daily routine.</p>
         </div>
         <div class="feature-list">
-          <article class="feature-row">
+          <article class="feature-row feature-row--photo">
+            <div class="feature-row-media">
+              <img src="meals-support.png" alt="Wellness carer serving a home-cooked meal to an older person at the dining table" />
+            </div>
             <div>
               <h3>Mealtime assistance</h3>
               <p>Sitting with you at mealtimes and providing gentle support with eating when needed — always with patience and dignity.</p>
@@ -85,9 +92,6 @@
               <p>We assist with heating up food in the microwave and air fryer. Liaise with family to ensure your loved one is always well fed and well hydrated.</p>
             </div>
           </article>
-        </div>
-        <div class="service-photo-band">
-          <img src="care-meals.png" alt="Caregiver bringing a meal with a smile" />
         </div>
       </div>
     </section>
