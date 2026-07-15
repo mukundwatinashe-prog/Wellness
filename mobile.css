@@ -149,30 +149,13 @@ button {
     padding: 2.5rem 0 2.75rem;
   }
 
-  .service-top-media {
-    height: 220px;
+  .service-hero.service-hero--video {
+    min-height: 380px;
+    padding: 2.75rem 0 3rem;
   }
 
   .media-card-frame {
     aspect-ratio: 16 / 11;
-  }
-
-  .service-hero--video {
-    min-height: 360px;
-    padding: 2.75rem 0;
-  }
-
-  .service-hero--video .service-hero-panel {
-    padding: 1.15rem 1.1rem 1.25rem;
-  }
-
-  .feature-row-media {
-    aspect-ratio: 16 / 11;
-  }
-
-  .service-photo-band {
-    margin-top: 2rem;
-    border-radius: var(--radius-md);
   }
 
   .hero-slider {

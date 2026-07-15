@@ -1557,7 +1557,8 @@ body.drawer-open { overflow: hidden; }
   padding: 3.25rem 0 3.5rem;
 }
 
-.service-top-copy h1 {
+.service-top-copy h1,
+.service-hero h1 {
   margin: 0 0 0.85rem;
   font-size: clamp(1.85rem, 5vw, 2.85rem);
   font-weight: 700;
@@ -1566,7 +1567,8 @@ body.drawer-open { overflow: hidden; }
   max-width: 16ch;
 }
 
-.service-top-copy .lead {
+.service-top-copy .lead,
+.service-hero .lead {
   margin: 0;
   max-width: 36rem;
   font-size: 1.05rem;
@@ -1574,24 +1576,51 @@ body.drawer-open { overflow: hidden; }
   opacity: 0.95;
 }
 
-.service-top-media {
+/* Video behind text (companionship / meals) */
+.service-hero {
   position: relative;
-  width: 100%;
-  height: clamp(220px, 42vw, 420px);
+  isolation: isolate;
   overflow: hidden;
-  background: #001a5c;
-  border-top: 3px solid var(--orange);
+  background: linear-gradient(145deg, var(--blue) 0%, var(--blue-dark) 100%);
+  color: var(--white);
+  padding: 4rem 0 4.5rem;
+  min-height: clamp(340px, 58vh, 520px);
+  display: flex;
+  align-items: center;
 }
 
-.service-top-video {
+.service-hero--video {
+  padding: 3.75rem 0;
+}
+
+.service-hero-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  display: block;
+  z-index: 0;
   pointer-events: none;
+}
+
+.service-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(105deg, rgba(0, 29, 102, 0.88) 0%, rgba(0, 45, 143, 0.72) 45%, rgba(0, 26, 92, 0.58) 100%);
+  pointer-events: none;
+}
+
+.service-hero .container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.service-hero-panel {
+  max-width: 36rem;
 }
 
 .service-hero-badge {
