@@ -7,6 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="stylesheet" href="site.css" />
   <link rel="stylesheet" href="mobile.css" />
 </head>
@@ -20,96 +23,90 @@
           <span class="logo-icon"><img src="logo.png" alt="Wellness Social Care Services" /></span>
           <span class="logo-text">Wellness Social<sub>Care Services</sub></span>
         </a>
-        <div class="header-actions"><a href="contact.html" class="header-cta">Free care enquiry</a><a class="social-link" href="https://www.linkedin.com/company/wellness-social-care-services-ltd/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page"><svg viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a class="social-link" href="https://www.facebook.com/wellnessscs" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page"><svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button></div>
+        <div class="header-actions">
+          <a href="contact.html" class="header-cta">Free care enquiry</a>
+          <a class="social-link" href="https://www.linkedin.com/company/wellness-social-care-services-ltd/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page"><svg viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a class="social-link" href="https://www.facebook.com/wellnessscs" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page"><svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+        </div>
       </div>
     </div>
   </header>
 
-    <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
-    <aside class="drawer" id="drawer" aria-label="Navigation">
-      <div class="drawer-head">
-        <strong>Menu</strong>
-        <button type="button" class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
-      </div>
-      <div class="drawer-inner">
-        <a href="contact.html" class="btn-nav">Start a care enquiry</a>
-        <a href="./" class="drawer-link">Home</a>
-        <button type="button" class="drawer-trigger" id="servicesTrigger" aria-expanded="false" aria-controls="servicesSub">Services</button>
-        <div class="drawer-sub" id="servicesSub" role="region">
-          <a href="personal-care.html">Personal Care</a>
-          <a href="companionship.html">Companionship</a>
-          <a href="medication.html">Medication</a>
-          <a href="meals.html">Meals</a>
-        </div>
-        <a href="services.html" class="drawer-link">All services overview</a>
-        <a href="jobs.html" class="drawer-link">Job Application</a>
-        <a href="contact.html" class="drawer-link">Contact</a>
-        <a href="about.html" class="drawer-link">About Us</a>
-      </div>
-    </aside>
-
-<main id="main" class="section">
-    <div class="container">
-      <h1 class="section-title">Our services</h1>
-      <p class="section-desc">
-        Flexible, dignified support tailored to each person and family across Scotland.
-      </p>
-      <div class="services-grid">
-        <a href="personal-care.html" class="service-card">
-          <div class="service-card-img">
-            <img src="care-dressing.png" alt="Caregiver gently assisting with dressing at home" />
-          </div>
-          <div class="service-card-body">
-            <h3>Personal Care</h3>
-            <p>We support service users with personal care in the comfort of home, with dignity and respect. This includes assistance with washing and showering, oral care, brushing hair, and continence care—all delivered by our trained, compassionate team.</p>
-          </div>
-        </a>
-        <a href="companionship.html" class="service-card">
-          <div class="service-card-img">
-            <img src="care-hands.png" alt="Compassionate companionship — a moment of connection" />
-          </div>
-          <div class="service-card-body">
-            <h3>Companionship</h3>
-            <p>Friendly, consistent companionship and emotional support so your loved one never feels alone.</p>
-          </div>
-        </a>
-        <a href="medication.html" class="service-card">
-          <div class="service-card-img">
-            <img src="care-companion.png" alt="Professional care and reassurance" />
-          </div>
-          <div class="service-card-body">
-            <h3>Medication</h3>
-            <p>Support with medication reminders and management, so treatments are taken safely and on time.</p>
-          </div>
-        </a>
-        <a href="meals.html" class="service-card">
-          <div class="service-card-img">
-            <img src="care-meals.png" alt="Caregiver bringing a meal with a smile" />
-          </div>
-          <div class="service-card-body">
-            <h3>Meals</h3>
-            <p>Help with meal preparation, feeding and nutrition so your loved one stays well nourished at home.</p>
-          </div>
-        </a>
-      </div>
-      <div class="services-cta">
-        <h2>Not sure which service fits?</h2>
-        <p>Tell us a little about your situation — we’ll help you explore options. There’s no obligation to proceed.</p>
-        <div class="services-cta-actions">
-          <a href="contact.html" class="btn-primary">Get a free care enquiry</a>
-        </div>
-        <div class="services-cta-phone">
-          <label for="areaPhoneSelect" class="services-cta-label">Or call us — choose your council area:</label>
-          <select id="areaPhoneSelect" class="services-cta-select" aria-label="Council area and phone number. Choose your area, then tap Call this number.">
-            <option value="">Select council area…</option>
-            <option value="tel:07354937042">Fife Council — 07354 937042</option>
-            <option value="tel:07340881019">Falkirk Council — 07340 881019</option>
-            <option value="tel:07340881019">Perth &amp; Kinross Council — 07340 881019</option>
-          </select>
-          <a href="#" class="btn-secondary services-cta-call-btn is-disabled" id="callAreaBtn" aria-disabled="true">Call this number</a>
-        </div>
-      </div>
+  <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+  <aside class="drawer" id="drawer" aria-label="Navigation">
+    <div class="drawer-head">
+      <strong>Menu</strong>
+      <button type="button" class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
     </div>
+    <div class="drawer-inner">
+      <a href="contact.html" class="btn-nav">Start a care enquiry</a>
+      <a href="./" class="drawer-link">Home</a>
+      <p class="drawer-label">Services</p>
+      <a href="personal-care.html" class="drawer-link drawer-link--service">Personal Care</a>
+      <a href="companionship.html" class="drawer-link drawer-link--service">Companionship</a>
+      <a href="medication.html" class="drawer-link drawer-link--service">Medication</a>
+      <a href="meals.html" class="drawer-link drawer-link--service">Meals</a>
+      <a href="services.html" class="drawer-link">All services</a>
+      <a href="jobs.html" class="drawer-link">Job Application</a>
+      <a href="contact.html" class="drawer-link">Contact</a>
+      <a href="about.html" class="drawer-link">About Us</a>
+    </div>
+  </aside>
+
+  <main id="main">
+    <section class="service-hero">
+      <div class="container">
+        <span class="service-hero-badge">What we offer</span>
+        <h1>Our services</h1>
+        <p class="lead">Flexible, dignified support tailored to each person and family across Scotland.</p>
+      </div>
+    </section>
+
+    <section class="section section--blue">
+      <div class="container">
+        <nav class="services-list" aria-label="Service list">
+          <a href="personal-care.html" class="services-list-item">
+            <h2>Personal Care</h2>
+            <p>Support with washing, oral care, hair brushing and continence care — delivered with dignity at home.</p>
+            <span class="list-cta">View personal care →</span>
+          </a>
+          <a href="companionship.html" class="services-list-item">
+            <h2>Companionship</h2>
+            <p>Friendly, consistent companionship and emotional support so your loved one never feels alone.</p>
+            <span class="list-cta">View companionship →</span>
+          </a>
+          <a href="medication.html" class="services-list-item">
+            <h2>Medication</h2>
+            <p>Support with medication reminders and management, so treatments are taken safely and on time.</p>
+            <span class="list-cta">View medication support →</span>
+          </a>
+          <a href="meals.html" class="services-list-item">
+            <h2>Meals</h2>
+            <p>Help with meal preparation, feeding and nutrition so your loved one stays well nourished at home.</p>
+            <span class="list-cta">View meals &amp; nutrition →</span>
+          </a>
+        </nav>
+
+        <div class="services-cta">
+          <h2>Not sure which service fits?</h2>
+          <p>Tell us a little about your situation — we’ll help you explore options. There’s no obligation to proceed.</p>
+          <div class="services-cta-actions">
+            <a href="contact.html" class="btn-primary">Get a free care enquiry</a>
+          </div>
+          <div class="services-cta-phone">
+            <label for="areaPhoneSelect" class="services-cta-label">Or call us — choose your council area:</label>
+            <select id="areaPhoneSelect" class="services-cta-select" aria-label="Council area and phone number. Choose your area, then tap Call this number.">
+              <option value="">Select council area…</option>
+              <option value="tel:07354937042">Fife Council — 07354 937042</option>
+              <option value="tel:07340881019">Falkirk Council — 07340 881019</option>
+              <option value="tel:07340881019">Perth &amp; Kinross Council — 07340 881019</option>
+            </select>
+            <a href="#" class="btn-secondary services-cta-call-btn is-disabled" id="callAreaBtn" aria-disabled="true">Call this number</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">

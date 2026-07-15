@@ -7,8 +7,6 @@
   var menuToggle = document.getElementById('menuToggle');
   var drawer = document.getElementById('drawer');
   var overlay = document.getElementById('drawerOverlay');
-  var servicesTrigger = document.getElementById('servicesTrigger');
-  var servicesSub = document.getElementById('servicesSub');
 
   function isDrawerOpen() {
     return drawer && drawer.classList.contains('open');
@@ -60,13 +58,6 @@
       a.addEventListener('click', closeDrawer);
     });
   }
-  if (servicesTrigger && servicesSub) {
-    servicesTrigger.addEventListener('click', function () {
-      var open = servicesSub.classList.toggle('open');
-      servicesTrigger.classList.toggle('expanded', open);
-      servicesTrigger.setAttribute('aria-expanded', open);
-    });
-  }
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeDrawer();
@@ -83,6 +74,13 @@
       heroSlides[heroIndex].classList.add('active');
     }, 3500);
   }
+
+  document.querySelectorAll('.service-hero-video').forEach(function (video) {
+    if (prefersReducedMotion) {
+      video.pause();
+      video.removeAttribute('autoplay');
+    }
+  });
 
   var areaPhoneSelect = document.getElementById('areaPhoneSelect');
   var callAreaBtn = document.getElementById('callAreaBtn');
