@@ -75,7 +75,7 @@
     }, 3500);
   }
 
-  document.querySelectorAll('.service-hero-video').forEach(function (video) {
+  document.querySelectorAll('.service-hero-video, .service-top-video').forEach(function (video) {
     if (prefersReducedMotion) {
       video.pause();
       video.removeAttribute('autoplay');
