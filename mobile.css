@@ -15,7 +15,17 @@ video,
 iframe,
 svg {
   max-width: 100%;
-  height: auto;
+}
+
+/* Don't force height:auto on cover/fill media used in heroes and cards */
+.hero-slide,
+.service-hero-video,
+.feature-row-media img,
+.service-photo-band img,
+.about-photo img {
+  height: 100%;
+  max-width: none;
+  width: 100%;
 }
 
 .container {
@@ -133,7 +143,26 @@ button {
     font-size: 1rem;
   }
 
+  .service-hero--video {
+    min-height: 360px;
+    padding: 2.75rem 0;
+  }
+
+  .service-hero--video .service-hero-panel {
+    padding: 1.15rem 1.1rem 1.25rem;
+  }
+
+  .feature-row-media {
+    aspect-ratio: 16 / 11;
+  }
+
+  .service-photo-band {
+    margin-top: 2rem;
+    border-radius: var(--radius-md);
+  }
+
   .hero-slider {
+    height: 220px;
     min-height: 220px;
   }
 
