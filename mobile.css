@@ -75,7 +75,7 @@ button {
   }
 
   .logo-text sub {
-    font-size: 0.6rem;
+    font-size: 0.75rem;
     letter-spacing: 0.06em;
   }
 
@@ -85,7 +85,7 @@ button {
   }
 
   .header-cta {
-    font-size: 0.65rem;
+    font-size: 0.875rem;
     padding: 0.4rem 0.55rem;
     margin-right: 0;
   }
@@ -112,7 +112,7 @@ button {
   }
 
   .header-cta {
-    font-size: 0.62rem;
+    font-size: 0.8125rem;
     padding: 0.38rem 0.5rem;
   }
 }
@@ -261,7 +261,7 @@ button {
 @media (max-width: 767px) {
   .footer {
     padding: 1.5rem 1rem;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     overflow-wrap: anywhere;
   }
 
