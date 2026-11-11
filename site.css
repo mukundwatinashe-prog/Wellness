@@ -1537,6 +1537,22 @@ body.drawer-open { overflow: hidden; }
 .footer-links a:hover { text-decoration: underline; }
 .footer-links a:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--orange); border-radius: 4px; }
 
+.footer-credit {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.footer-credit a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-credit a:hover { opacity: 1; color: #fff; }
+.footer-credit a:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--orange); border-radius: 4px; }
+
 @media (min-width: 480px) {
   .header-cta { font-size: 0.875rem; padding: 0.55rem 1rem; }
 }
